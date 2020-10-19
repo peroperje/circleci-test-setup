@@ -1,5 +1,5 @@
 The app is just test for settings circleci and CRA
- 
+and there is no other purpose 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
