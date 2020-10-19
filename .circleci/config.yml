@@ -29,7 +29,7 @@ workflows:
   build:
     jobs:
       - build:
-        filters:
-          branches:
-            only:
-              - staging
+          filters:
+            branches:
+              only:
+                - staging
