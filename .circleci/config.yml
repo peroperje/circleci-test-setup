@@ -21,3 +21,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
+workflows:
+  version: 2
+  nightly:
+    triggers:
+      - schedule:
+          filters:
+            branches:
+              only:
+                - staging
+    jobs:
+      - build
