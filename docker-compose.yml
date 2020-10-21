@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   app:
-    container_name: citest
+    container_name: ci-test
     build:
       context: .
       dockerfile: Dockerfile
