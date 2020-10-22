@@ -1,10 +1,13 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  docker-publisher:
     environment:
-      IMAGE_NAME: peroperje/circleci-test-setup_app
+      IMAGE_NAME: jonathancardoso/building-on-ci
     docker:
       - image: circleci/buildpack-deps:stretch
+jobs:
+  build:
+    executor: docker-publisher
     steps:
       - checkout
       - setup_remote_docker
