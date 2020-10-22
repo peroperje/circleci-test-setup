@@ -1,29 +1,16 @@
 version: 2.1
 jobs:
   build:
+    environment:
+      IMAGE_NAME: peroperje/circleci-test-setup_app
     docker:
-      - image: circleci/node:12
-
-    working_directory: ~/repo
-
-
-
+      - image: circleci/buildpack-deps:stretch
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: yarn test
-      - run: yarn build
+      - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: docker build -f Dockerfile.prod -t $IMAGE_NAME:latest .
 
 workflows:
   version: 2
